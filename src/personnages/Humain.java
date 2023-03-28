@@ -3,10 +3,10 @@ package personnages;
 public class Humain {
 	private String nom;
 	private String boissonFav;
-	private int sommeArgent;
+	protected int sommeArgent;
 	
 	//elle ne sert que pour les humains donc doit être privée
-	private void parler(String texte) {
+	protected void parler(String texte) {
 		System.out.println("(" + nom + ") - " + texte);
 	}
 	
@@ -38,7 +38,7 @@ public class Humain {
 			this.perdreArgent(prix);
 		}
 		else 
-			this.parler("Je n'ai plus que " + Integer.toString(this.getArgent()) + " sous en poche. Je ne peux même pas m'offrir un " + bien + " à " + Integer.toString(prix)+ " sous.");
+			this.parler("Je n'ai plus que " + Integer.toString(this.getArgent()) + " sous en poche. Je ne peux même pas m'offrir un.e " + bien + " à " + Integer.toString(prix)+ " sous.");
 	}
 	
 	public void gagnerArgent(int sommeGagnée) {
@@ -48,5 +48,7 @@ public class Humain {
 	public void perdreArgent(int sommePerdue) {
 		this.sommeArgent -= sommePerdue;
 	}
+	
+	
 	
 }
