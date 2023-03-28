@@ -10,7 +10,7 @@ public class Commercant extends Humain {
 		int sommePerdue = this.getArgent();
 		this.perdreArgent(sommePerdue);
 		this.parler("J’ai tout perdu ! Le monde est trop injuste...");
-		return this.getArgent();
+		return sommePerdue;
 	}
 	 public void recevoir(int argent) {
 		 this.gagnerArgent(argent);
