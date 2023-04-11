@@ -1,9 +1,13 @@
 package personnages;
 
 public class Humain {
+	private static final int TAILLEMAX = 30;
+	
 	private String nom;
 	private String boissonFav;
 	protected int sommeArgent;
+	protected int nbConnaissance = 0;
+	protected Humain [] memoire = new Humain[TAILLEMAX];
 	
 	//elle ne sert que pour les humains donc doit être privée
 	protected void parler(String texte) {
@@ -41,13 +45,50 @@ public class Humain {
 			this.parler("Je n'ai plus que " + Integer.toString(this.getArgent()) + " sous en poche. Je ne peux même pas m'offrir un.e " + bien + " à " + Integer.toString(prix)+ " sous.");
 	}
 	
-	public void gagnerArgent(int sommeGagnée) {
+	protected void gagnerArgent(int sommeGagnée) {
 		this.sommeArgent += sommeGagnée;
 	}
 	
-	public void perdreArgent(int sommePerdue) {
+	protected void perdreArgent(int sommePerdue) {
 		this.sommeArgent -= sommePerdue;
 	}
+	
+	private void memoriser(Humain rencontre) {
+		if(this.nbConnaissance<TAILLEMAX) {
+			this.memoire[nbConnaissance] = rencontre;
+			this.nbConnaissance +=1;
+		}
+		else {
+			for(int i = 0; i<nbConnaissance-1; i++) {
+				this.memoire[i] = this.memoire[i+1];
+			}
+			this.memoire[nbConnaissance-1] = rencontre;
+		}
+	}
+	
+	private void repondre(Humain qqun) {
+		this.direBonjour();
+		this.memoriser(qqun);
+	}
+	
+	public void faireConnaissanceAvec(Humain autreHumain) {
+		this.direBonjour();
+		autreHumain.repondre(this);
+		this.memoriser(autreHumain);
+	}
+	
+	public void listerConnaissance() {
+		if (this.nbConnaissance == 0){
+			this.parler("Je ne connais personne.");
+			return;
+		}
+		System.out.print("Je connais beaucoup de monde dont : ");
+		for(int i = 0; i < nbConnaissance-1; i++) {
+			System.out.print(this.memoire[i].getNom() + ", ");
+		}
+		System.out.println(this.memoire[nbConnaissance-1].getNom() + ".");
+	}
+	
 	
 	
 	
