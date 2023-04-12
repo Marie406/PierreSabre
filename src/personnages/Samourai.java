@@ -3,7 +3,7 @@ package personnages;
 public class Samourai extends Ronin {
 	String seigneur;
 	
-	public Samourai(String nom, String boissonFav, int sommeArgent, String seigneur) {
+	public Samourai(String seigneur, String nom, String boissonFav, int sommeArgent) {
 		super(nom, boissonFav, sommeArgent);
 		this.seigneur = seigneur;
 	}
