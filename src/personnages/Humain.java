@@ -82,11 +82,12 @@ public class Humain {
 			this.parler("Je ne connais personne.");
 			return;
 		}
-		System.out.print("Je connais beaucoup de monde dont : ");
+		String chaine = "Je connais beaucoup de monde dont : ";
 		for(int i = 0; i < nbConnaissance-1; i++) {
-			System.out.print(this.memoire[i].getNom() + ", ");
+			chaine = chaine + this.memoire[i].getNom() + ", ";
 		}
-		System.out.println(this.memoire[nbConnaissance-1].getNom() + ".");
+		chaine = chaine + this.memoire[nbConnaissance-1].getNom() + ".";
+		this.parler(chaine);
 	}
 	
 	
