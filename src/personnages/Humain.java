@@ -53,7 +53,7 @@ public class Humain {
 		this.sommeArgent -= sommePerdue;
 	}
 	
-	private void memoriser(Humain rencontre) {
+	protected void memoriser(Humain rencontre) {
 		if(this.nbConnaissance<TAILLEMAX) {
 			this.memoire[nbConnaissance] = rencontre;
 			this.nbConnaissance +=1;
